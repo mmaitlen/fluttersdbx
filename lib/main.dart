@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qr_flutter/qr_flutter.dart';
+import 'package:sdbx/detail_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,32 +30,120 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+final data = [
+  {
+    'label': '1',
+    'imgurl': 'assets/images/img1.jpg',
+  },
+  {'label': '2', 'imgurl': 'assets/images/img2.jpg'},
+  {'label': '3', 'imgurl': 'assets/images/img12.jpg'},
+  {'label': '3', 'imgurl': 'assets/images/img3.jpg'},
+  {'label': '1', 'imgurl': 'assets/images/img4.jpg'},
+  {'label': '2', 'imgurl': 'assets/images/img5.jpg'},
+  {'label': '3', 'imgurl': 'assets/images/img6.jpg'},
+  {'label': '1', 'imgurl': 'assets/images/img7.jpg'},
+  {'label': '1', 'imgurl': 'assets/images/img8.jpg'},
+  {'label': '2', 'imgurl': 'assets/images/img9.jpg'},
+  {'label': '3', 'imgurl': 'assets/images/img10.jpg'},
+  {'label': '2', 'imgurl': 'assets/images/img11.jpg'},
+];
+
 class _MyHomePageState extends State<MyHomePage> {
+  final list = <Map<String, dynamic>>[];
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    Widget _constructRow(data) => Padding(
+          padding: const EdgeInsets.only(top: 4, bottom: 4),
+          child: ItemRow(data),
+        );
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        // child: Image.network(
-        //   'https://lh3.googleusercontent.com/Vqbe9lOx9R8TBag0QeUBCFuQC5LmsuP4lVGTcHacCOTMlgbnBeCIKn9POrGRwYyVe_o0VyIfKYqw9L2S3OczDa4DU7VuRcFQvzJk4eaVLyZaTTmKS86pJMeZYebHxSiDciRvPU0tgQe5IQhUysOFLvK75A2FvzXAuuiJ4syro1IfmazPCwTAvmRgqATolAqqHG84gTlcpltuSvs9lWpnm-eRkhxwLO1RsPF2R0Q6xN0hqK5V4jMNtKLUjNLLbEtcU39pX--HJFMJNHc1yD9obD1jM4wTmmqNMc3lvhBR0WdCwd9CnKnRZzWdpj49J35hJsCSDRONHve94-GQLpQqtZCGnZqDBKjjvTT4k6TPpLQ3beAtmqcDIr_fb-FrLQBrQoRSc_8h5e-_2JXfSjpvPsQ4Rz85EfTZofl6k966UO03gDMGzUwTMh5m_6c9Kx2Osx0QJwnHaLeUeHSCmckZE9tsZYpaDrM8TsULj7jQHrwRPiCfYCLkrFBzPK3c6yzHxXsWIadOkUpVpYnV8bnG9iurcuIBKSE_MnH2zFgTqnrRWrEEXKbbVwaoumrNTyr_AjwICFPnlQA-abQsj086DABcK_rwDY6MHE5Zq2BcQYv_y5u6VBTwJJXgaNHPrCLJhGzky2ygjJ99Au7h8gPIi9ZaMYOmCa8bze1ZTgpqJOEIONaYxlQZgQ5bmTtp94qGjYRdQBNx6u9wg7nMrJwXYgDm=w1052-h1712-no?authuser=0',
-        // ),
-        child:QrImage(
-  data: "https://lh3.googleusercontent.com/6wHtVujNkw2h44P0TJpv3HKYcgMmZUOjPbnY0GNirmjviDzrJBqXHV4zTpaFJySSuwyPpAkpaJoF1aJgbTxaHOVxqeGqCu1sw14Z7jfqoTGfcSm37j9jAVtfnMI8cBzIuHQnTntllfNSDTa-R12srblkZmt_MeG40YA1xbsJKwSTQLh3MU16g5j6hvfkoOaBD4mNu4yQ7JPzX_1XUTEtCrGgUhK55gRqZSEuBj5xljYK1o3mAFuqhk6j5JQ16oc2XVuxbwIe4xPAjF-zyP41iz5Dy3vYy0VEWsMwPMEPfTqMG7l1YmujZM9ryjqQppJV5xBiqxPUkoKXjqP23mUbRsKzygiicKefYvbYusmXW2G1dRKbGhWdX5vzfO840G_GcC-HE1KbyjcgfmpYhTDxo8zUAz9G6m3Qvfx8whGlGqUH29686S-RPOnOu0uTjB9DOcHURdS0P16neZowEfLEE54Q-0fHCPwFeQmJXVMqQ95TLchkBTWv96fnGkGZciOFGzN0a5q_frTszXhGbns1iwXhRlrORRiDLe_KiDx2EHKDFYqjznD_zxSFCuROi4gFHmKXnHWycnLNZz3ZEzLChugP7p1UXg-c4BZqmc2-Tz1MjVCVYSsIFZnTyoUXu953RiyeKXM-XFqih2AMDbyJgG8AfkeowJwvjLLibWBQ5_c5499vkXoAkdB_HZl1AbYa9xRGnyowAUR5dEleGs0z2tql=w1284-h1712-no?authuser=0",
-  version: QrVersions.auto,
-  size: 200.0,
-) ,
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.only(left: 8.0, right: 8),
+          child: SingleChildScrollView(
+            child: Column(children: [
+              ...data.map((element) {
+                return _constructRow(element);
+              }).toList()
+            ]),
+          ),
+        ));
+  }
+}
+
+class ItemRow extends StatefulWidget {
+  ItemRow(this.data, {Key? key}) : super(key: key);
+  Map<String, dynamic> data;
+
+  @override
+  State<ItemRow> createState() => _ItemRowState();
+}
+
+class _ItemRowState extends State<ItemRow> {
+  bool chosen = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          chosen = !chosen;
+        });
+      },
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+            color: Colors.black26,
+            border: Border.all(
+                color: chosen ? Colors.amber : Colors.blue, width: 5),
+            borderRadius: const BorderRadius.all(Radius.circular(4))),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width < 600 ? 100 : 300,
+                child: widget.data.containsKey('imgurl')
+                    ? Image.asset(widget.data['imgurl'])
+                    : Container(
+                        width: 50,
+                        height: 50,
+                        color: Colors.red,
+                      ),
+              ),
+              SizedBox(
+                width: 24,
+              ),
+              Text(
+                widget.data['label'],
+                style: TextStyle(fontSize: 26, color: Colors.white),
+              ),
+              Spacer(),
+              Center(
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  DetailsScreen(widget.data['imgurl'])));
+                    },
+                    icon: Icon(
+                      Icons.chevron_right,
+                      size: 40,
+                    )),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

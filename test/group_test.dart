@@ -8,7 +8,7 @@ void main() {
     test('ensure A2 functionality', () {
       expect(2 + 2, 4);
     });
-  }, skip: true);
+  }, skip: 'dont run tests in GroupA');
 
   group('GroupBTest - ', () {
     test('ensure B1 functionality', () {
