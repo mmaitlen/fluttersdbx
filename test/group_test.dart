@@ -1,18 +1,13 @@
 import 'package:test/test.dart';
 
-void main() {
-  group('GroupATest - ', () {
-    test('ensure A1 functionality', () {
-      expect(1 + 2, 3);
-    });
-    test('ensure A2 functionality', () {
-      expect(2 + 2, 4);
-    });
-  }, skip: 'dont run tests in GroupA');
+/// 2 groups
+/// show test output in VSCode
+/// show flutter test on command line, just shows past tests
+/// flutter test --help
+/// flutter test -r expanded
+/// add tag to tests
+/// flutter test -r expanded -t 'tag1'
+/// skip group
 
-  group('GroupBTest - ', () {
-    test('ensure B1 functionality', () {
-      expect(4 + 2, 6);
-    });
-  });
+void main() {
 }
