@@ -33,7 +33,7 @@ class Widget1 extends StatelessWidget {
     return Container(
       color: Colors.green[200],
       child: const Padding(
-        padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(8.0),
         child: Text(
           'widget1',
           style: TextStyle(fontSize: 20),

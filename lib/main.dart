@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sdbx/demo_screens/sdbx1_screen.dart';
+import 'package:sdbx/demo_screens/sdbx2_screen.dart';
 
 void main() {
   runApp(const SdbxApp());
@@ -15,7 +15,7 @@ class SdbxApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Sdbx1Screen(),
+      home: const Sdbx2Screen(),
     );
   }
 }
