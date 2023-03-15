@@ -50,6 +50,7 @@ class Sdbx3ScreenViewModel extends BaseViewModel {
     Person(id: 'idbob', label: 'Bob'),
     Person(id: 'idfred', label: 'Fred'),
     Person(id: 'idstan', label: 'Stan'),
+    Person(id: 'idmartha', label: 'Martha'),
   };
 
   final favHobby = <String, Hobby>{};
@@ -59,7 +60,7 @@ class Sdbx3ScreenViewModel extends BaseViewModel {
   }
 
   void onFavHobbySelected(String id, Hobby hobby) {
-    print('hobby tapped $id $hobby');
+    print('vm: hobby tapped $id $hobby');
     favHobby[id] = hobby;
     notifyListeners();
   }
