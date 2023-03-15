@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sdbx/demo_screens/sdbx2_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:sdbx/ui/demo_screens/sdbx3_screen.dart';
 
 void main() {
   runApp(const SdbxApp());
@@ -15,7 +16,10 @@ class SdbxApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Sdbx2Screen(),
+      home: ChangeNotifierProvider(
+        create: (context) => Sdbx3ScreenViewModel(),
+        child: const Sdbx3Screen(),
+      ),
     );
   }
 }
