@@ -125,19 +125,17 @@ class HobbiesList extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            ...Hobby.values.map(
-              (hobby) => hobby == Hobby.noneSelected
-                  ? const SizedBox.shrink()
-                  : Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: HobbyWidget(
-                        id: id,
-                        thisHobby: hobby,
-                        onHobbyResponse: onHobbyResponse,
-                        selectedHobby: selectedHobby,
-                      ),
+            ...Hobby.values.where((hobby) => hobby != Hobby.noneSelected).map(
+                  (hobby) => Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: HobbyWidget(
+                      id: id,
+                      thisHobby: hobby,
+                      onHobbyResponse: onHobbyResponse,
+                      selectedHobby: selectedHobby,
                     ),
-            )
+                  ),
+                )
           ],
         ),
       ),
@@ -161,6 +159,7 @@ class HobbyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("HobbyWidget $id");
     final isSelected = selectedHobby == thisHobby;
 
     final textColor = isSelected ? Colors.blue : Colors.black38;
